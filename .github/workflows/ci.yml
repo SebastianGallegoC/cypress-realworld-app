@@ -27,18 +27,15 @@ jobs:
         run: npm run cypress:run
 
       # === PASO DE SONARCLOUD ===
-      # Reemplazar MI_ORG_EN_SONARCLOUD por tu organización en SonarCloud
-      # Reemplazar MI_PROJECT_KEY_EN_SONARCLOUD por tu clave de proyecto en SonarCloud
-      # Asegúrate de tener el secreto SONAR_TOKEN configurado en GitHub
-      # Este paso se ejecutará solo si el secreto SONAR_TOKEN está configurado
+      # Análisis de calidad de código con SonarCloud
       - name: SonarCloud scan
         uses: sonarsource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.organization=MI_ORG_EN_SONARCLOUD
-            -Dsonar.projectKey=MI_PROJECT_KEY_EN_SONARCLOUD
+            -Dsonar.organization=sebastiangallegoc
+            -Dsonar.projectKey=SebastianGallegoC_cypress-realworld-app
             -Dsonar.host.url=https://sonarcloud.io
 
       - name: Upload Cypress screenshots
